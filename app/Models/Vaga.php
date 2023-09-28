@@ -11,6 +11,7 @@ class Vaga extends Model
     use HasFactory;
     use HasUuids;
 
+    protected $primaryKey = 'uuid';
     protected $casts = [
         'requisitos' => 'array'
     ];
