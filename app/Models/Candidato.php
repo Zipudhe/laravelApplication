@@ -11,6 +11,7 @@ class Candidato extends Model
     use HasFactory;
     use HasUuids;
 
+    protected $primaryKey = 'uuid';
     protected $casts = [
         'habilidades' => 'array'
     ];
