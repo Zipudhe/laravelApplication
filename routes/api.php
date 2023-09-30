@@ -2,8 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\Candidato;
+
 use App\Http\Controllers\CandidatoController;
+use App\Http\Controllers\VagaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +27,13 @@ Route::prefix('candidato')->group(function(){
     Route::get('/{id}', [CandidatoController::class, 'show']);
     Route::put('/{id}', [CandidatoController::class, 'update']);
     Route::delete('/{id}', [CandidatoController::class, 'destroy']);
+});
+
+
+Route::prefix('vaga')->group(function(){
+    Route::get('/', [VagaController::class, 'index']);
+    Route::post('/', [VagaController::class, 'store']);
+    Route::get('/{id}', [VagaController::class, 'show']);
+    Route::put('/{id}', [VagaController::class, 'update']);
+    Route::delete('/{id}', [VagaController::class, 'destroy']);
 });

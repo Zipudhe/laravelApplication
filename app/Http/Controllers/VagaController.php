@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Candidato;
+use App\Models\Vaga;
 
-class CandidatoController extends Controller
+class VagaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Candidato::all();
+        return Vaga::all();
     }
 
     /**
@@ -27,7 +27,6 @@ class CandidatoController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $requestContent = json_decode($request->getContent());
         if($requestContent == null) {
             return response()->json([
@@ -36,7 +35,7 @@ class CandidatoController extends Controller
             ], 400);
         }
 
-        $candidato = new Candidato();
+        $candidato = new Vaga();
         foreach($requestContent as $key => $value) {
             $candidato->$key = $value;
         }
@@ -50,7 +49,7 @@ class CandidatoController extends Controller
      */
     public function show(string $id)
     {
-        return Candidato::find($id);
+        return Vaga::find($id);
     }
 
     /**
@@ -66,20 +65,22 @@ class CandidatoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $candidato = Candidato::find($id);
+        // update model
+        $vaga = Vaga::find($id);
         $requestContent = json_decode($request->getContent());
+
         if($requestContent == null) {
             return response()->json([
                 'message' => 'Invalid JSON',
                 'JSON' => $request->getContent()
             ], 400);
         }
-        foreach($requestContent as $key => $value) {
-            $candidato->$key = $value;
-        }
 
-        $candidato->save();
-        return $candidato;
+        foreach($requestContent as $key => $value) {
+            $vaga->$key = $value;
+        }
+        $vaga->save();
+        return $vaga;
     }
 
     /**
@@ -87,7 +88,7 @@ class CandidatoController extends Controller
      */
     public function destroy(string $id)
     {
-        $candidato = Candidato::find($id);
-        return $candidato->delete();
+        $vaga = Vaga::find($id);
+        return $vaga->delete();
     }
 }
