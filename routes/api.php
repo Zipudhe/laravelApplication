@@ -29,6 +29,7 @@ Route::prefix('candidato')->group(function(){
     Route::delete('/{IdCandidato}', [CandidatoController::class, 'destroy']);
     Route::post('/candidatar', [CandidatoController::class, 'candidatar']);
     Route::get('/{IdCandidato}/oportunidades', [CandidatoController::class, 'match']);
+    Route::get('/{IdCandidato}/candidatado', [CandidatoController::class, 'candidato']);
 });
 
 

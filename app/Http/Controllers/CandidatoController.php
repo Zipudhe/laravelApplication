@@ -99,7 +99,7 @@ class CandidatoController extends Controller
     }
 
     public function candidato(string $id) {
-
+        return Candidato::find($id)->cadidatado()->get();
     }
 
     public function candidatar(Request $request) {
