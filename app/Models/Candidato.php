@@ -20,7 +20,7 @@ class Candidato extends Model
     protected $casts = [
         'habilidades' => 'array'
     ];
-    protected $fillable = ["nome", "email", "senha", "habilidades", "data_nascimento"]; // campos que podem ser preenchidos pela request
+    protected $fillable = ["nome", "email", "senha", "habilidades"]; // campos que podem ser preenchidos pela request
 
     public function vagas(): BelongsToMany {
         return $this->belongsToMany(Vaga::class, 'candidato_vaga', 'candidato_id', 'vaga_id')->withPivot('candidatou');
